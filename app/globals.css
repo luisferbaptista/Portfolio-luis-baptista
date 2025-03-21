@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== HIDE CURSOR COMPLETELY ===== */
+/* Método extremo para ocultar el cursor nativo */
+html.custom-cursor {
+  cursor: none !important;
+}
+
+html.custom-cursor body {
+  cursor: none !important;
+}
+
+html.custom-cursor * {
+  cursor: none !important;
+}
+
+/* Asegurarse de que todos los elementos interactivos tengan cursor: none */
+html.custom-cursor a,
+html.custom-cursor button,
+html.custom-cursor input,
+html.custom-cursor textarea,
+html.custom-cursor select,
+html.custom-cursor [role="button"],
+html.custom-cursor [tabindex],
+html.custom-cursor label,
+html.custom-cursor [onclick] {
+  cursor: none !important;
+}
+
+/* Solo mostrar cursor normal en dispositivos móviles */
+@media (max-width: 768px) {
+  html.custom-cursor,
+  html.custom-cursor body,
+  html.custom-cursor * {
+    cursor: auto !important;
+  }
+
+  html.custom-cursor a,
+  html.custom-cursor button,
+  html.custom-cursor input,
+  html.custom-cursor textarea,
+  html.custom-cursor select,
+  html.custom-cursor [role="button"],
+  html.custom-cursor [tabindex],
+  html.custom-cursor label,
+  html.custom-cursor [onclick] {
+    cursor: pointer !important;
+  }
+}
+
+/* Dark mode cursor colors */
+.dark .custom-cursor [class*="border-blue-500"] {
+  border-color: rgba(96, 165, 250, 0.8) !important;
+}
+
+.dark .custom-cursor [class*="bg-blue-500"] {
+  background-color: rgba(96, 165, 250, 1) !important;
+}
+
+/* ===== CUSTOM SCROLLBAR - FULLY INTEGRATED ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+}
+
+/* Modo claro - Firefox */
+* {
+  scrollbar-color: rgba(59, 130, 246, 0.7) rgba(241, 245, 249, 0.5);
+}
+
+/* Modo oscuro - Firefox */
+.dark * {
+  scrollbar-color: rgba(96, 165, 250, 0.7) rgba(30, 41, 59, 0.5);
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Modo claro - Track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: rgba(241, 245, 249, 0.5);
+}
+
+/* Modo claro - Thumb */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 130, 246, 0.7);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(59, 130, 246, 0.9);
+  border-width: 1px;
+}
+
+/* Modo oscuro - Track */
+.dark::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.dark::-webkit-scrollbar-track:hover {
+  background-color: rgba(30, 41, 59, 0.5);
+}
+
+/* Modo oscuro - Thumb */
+.dark::-webkit-scrollbar-thumb {
+  background-color: rgba(96, 165, 250, 0.7);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.dark::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(96, 165, 250, 0.9);
+  border-width: 1px;
+}
+
+/* Scrollbar corner */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Scrollbar buttons */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Estilo especial para secciones con fondo diferente */
+.bg-gray-100::-webkit-scrollbar-track:hover,
+.bg-gray-800::-webkit-scrollbar-track:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .bg-gray-100::-webkit-scrollbar-track:hover,
+.dark .bg-gray-800::-webkit-scrollbar-track:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
